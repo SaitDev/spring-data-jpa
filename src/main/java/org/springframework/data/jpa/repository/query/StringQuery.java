@@ -238,7 +238,7 @@ class StringQuery implements DeclaredQuery {
 			/*
 			 * Prefer indexed access over named parameters if only SpEL Expression parameters are present.
 			 */
-			if (!parametersShouldBeAccessedByIndex && query.contains("?#{")) {
+			if (!parametersShouldBeAccessedByIndex && (query.contains("?#{") || query.contains(":#{"))) {
 				parametersShouldBeAccessedByIndex = true;
 				greatestParameterIndex = 0;
 			}
